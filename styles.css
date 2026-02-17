@@ -1,0 +1,203 @@
+/* --- 1. RESET & TOKENS --- */
+:root {
+    --bg-color: #000000;
+    --text-color: #ffffff;
+    --accent-gray: #373737;
+    --border-thick: 4px solid var(--text-color);
+    --border-thin: 2px solid var(--text-color);
+    --radius: 0px;
+    --space-sm: 20px;
+    --space-md: 40px;
+    --space-lg: 80px;
+    --header-height: 90px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Helvetica Neue', Tahoma, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+a { text-decoration: none; color: inherit; transition: opacity 0.3s ease; }
+a:hover { opacity: 0.6; }
+img { display: block; max-width: 100%; }
+
+/* --- 2. LAYOUT & HEADER --- */
+.container { max-width: 1400px; margin: 0 auto; /*padding: 0 var(--space-sm)*/; }
+
+.sticky-header {
+    position: sticky; top: 0; z-index: 1000;
+    background: var(--bg-color);
+    padding: 20px 30px;
+    /* Removed simple border, handled by ::after below */
+}
+
+/* REVISED GLOWING EFFECT */
+.sticky-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px; 
+    
+    /* Layer 1: Static thin grey base line */
+    background: linear-gradient(to right, 
+        transparent 0%, 
+        #888888 10%, 
+        #888888 90%, 
+        transparent 100%);
+    
+    /* Layer 2: Overlay white gradient glow that moves */
+    background-image: linear-gradient(to right, 
+        transparent, 
+        rgba(255, 255, 255, 0.1), 
+        rgba(255, 255, 255, 0.6), 
+        rgba(255, 255, 255, 0.1), 
+        transparent);
+    
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    background-repeat: no-repeat;
+    animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+    0% { background-position: -100% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.header-container { display: flex; justify-content: space-between; align-items: center; }
+.title-logo { height: 35px; width: auto; }
+
+.desktop-nav ul { display: flex; gap: 20px; list-style: none; }
+.desktop-nav a { font-weight: 600; font-size: 1.1rem; letter-spacing: 1px; }
+
+/* Mobile Menu Button - Default State (Hidden on Desktop) */
+.mobile-menu-btn {
+    display: none; /* Hidden by default */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001; /* Ensure it stays above the overlay */
+}
+
+/* Ensure the SVG icon has physical dimensions to be seen */
+.mobile-menu-btn img {
+    width: 30px;
+    height: 35px;
+    display: block;
+}
+
+.mobile-overlay {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: var(--bg-color);
+    z-index: 999;
+    overflow: hidden;
+    transition: height 0.3s ease;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
+
+.mobile-overlay.active {
+    height: calc(100vh - var(--header-height));
+}
+
+/* Ensure list and text styles are maintained */
+.mobile-overlay ul { list-style: none; display: flex; flex-direction: column; gap: 30px; }
+.mobile-overlay a { font-size: 2rem; font-weight: 700; letter-spacing: 2px; }
+.divider { width: 80vw; height: 2px; background: var(--text-color); }
+
+/* --- 3. COMPONENTS --- */
+h1 { font-size: 4rem; font-weight: 700; letter-spacing: 4px; margin-bottom: var(--space-sm); line-height: 1.1; }
+
+.brutal-block { border: var(--border-thick); padding: var(--space-md); margin-bottom: var(--space-md); }
+.brutal-block h2 { font-size: 2rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: var(--space-sm); }
+
+.btn {
+    display: inline-block; padding: 12px 24px;
+    border: var(--border-thick); font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; margin-top: var(--space-sm);
+}
+.btn:hover { background: var(--text-color); color: var(--bg-color); }
+
+.carousel-container { position: relative; width: 100%; overflow: hidden; margin-bottom: var(--space-md); }
+.carousel-track { display: flex; transition: transform 0.5s ease-in-out; height: 100%; }
+.carousel-slide { min-width: 100%; height: 85vh; object-fit: cover; }
+.carousel-btn {
+    position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
+    background: transparent; border: none; cursor: pointer; padding: 10px;
+}
+.carousel-btn img { width: 30px; height: 30px; }
+.prev-btn { left: 20px; } .next-btn { right: 20px; }
+
+/* --- 4. PAGE SPECIFIC --- */
+.hero-text { padding: var(--space-lg) 30px; }
+.hero-text h1 { font-size: 6rem; }
+
+.projects-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-md); padding: 0 30px;
+}
+.project-card {
+    border: var(--border-thick); padding: var(--space-md);
+    min-height: 350px; transition: transform 0.2s; display: flex; flex-direction: column;
+}
+.project-card:hover { transform: translate(-5px, -5px); background: var(--text-color); color: var(--bg-color); }
+.project-card:hover h3, .project-card:hover p { color: var(--bg-color); }
+.project-card img { height: 200px; width: 100%; object-fit: cover; margin-bottom: 20px; border: 1px solid #fff; }
+
+.project-detail-wrap { display: flex; gap: 40px; position: relative; }
+.project-content { flex: 1; }
+.project-toc {
+    width: 325px; position: sticky; top: 120px; align-self: flex-start;
+    background: var(--accent-gray); padding: 20px; border-radius: 8px;
+}
+.project-toc button {
+    display: block; width: 100%; text-align: left; background: none; border: none;
+    color: #fff; padding: 4px 0; cursor: pointer; font-size: 1.0rem;
+}
+.project-toc button:hover { opacity: 0.7; transform: translateX(5px); }
+.detail-section { scroll-margin-top: 110px; margin-bottom: var(--space-sm); }
+
+.skills-cloud { display: flex; flex-wrap: wrap; gap: 15px; padding: 0 30px; }
+.skill-tag { padding: 10px 20px; border: var(--border-thin); font-size: 1.1rem; }
+.skill-tag:hover { background: var(--text-color); color: var(--bg-color); }
+
+.pdf-container { height: 80vh; border: var(--border-thick); margin: 0 30px; }
+iframe { width: 100%; height: 100%; border: none; }
+
+footer { border-top: var(--border-thick); margin-top: var(--space-lg); padding: var(--space-lg) 30px; }
+.footer-top { display: flex; justify-content: space-between; margin-bottom: 20px; }
+
+/* --- 5. RESPONSIVE --- */
+@media (max-width: 768px) {
+    /* Hide Desktop Nav */
+    .desktop-nav {
+        display: none;
+    }
+
+    /* Show Mobile Button */
+    .mobile-menu-btn {
+        display: flex; /* Changed from block to flex for better centering */
+        align-items: center;
+        justify-content: center;
+    }
+
+    h1 { font-size: 3rem; }
+    .hero-text h1 { font-size: 3.5rem; }
+    
+    .project-detail-wrap { flex-direction: column; }
+    .project-toc { display: none; }
+    .projects-grid { padding: 0; }
+    .footer-top { flex-direction: column; gap: 10px; }
+}

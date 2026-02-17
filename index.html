@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Henin</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="sticky-header">
+        <div class="container header-container">
+            <a href="#" class="logo-link">
+                <img src="SVG/My_Logo.svg" alt="Alex Henin" class="title-logo">
+            </a>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#projects">PROJECTS</a></li>
+                    <li><a href="#skills">SKILLS</a></li>
+                    <li><a href="#resume">RESUME</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <img src="SVG/Mobile_Menu_Button.svg" alt="Menu">
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-overlay" id="mobileOverlay">
+        <nav>
+            <ul>
+                <li><a href="#about">ABOUT</a></li>
+                <li class="divider"></li>
+                <li><a href="#projects">PROJECTS</a></li>
+                <li class="divider"></li>
+                <li><a href="#skills">SKILLS</a></li>
+                <li class="divider"></li>
+                <li><a href="#resume">RESUME</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="app"></div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-top">
+                <a href="mailto:alexhenin110@gmail.com" class="footer-email">alexhenin110@gmail.com</a>
+                <p class="footer-remark">Built from scratch with HTML, CSS, and JavaScript</p>
+            </div>
+            <p class="copyright">© 2026 Alex Henin</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
