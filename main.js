@@ -187,8 +187,8 @@ const DB = {
     ],
     skills: [
         "CNC Machining", "3D Printing/Slicing", "Rapid Prototyping", "First Principles Engineering",
-        "Python", "Fusion 360", "Onshape", "Solidworks", "Blender", "3D Art", 
-        "Photo Editing", "Vector Design", "Video Compositing", "Excel"
+        "Python", "JavaScript", "HTML", "CSS", "Fusion 360", "Onshape", "Solidworks", "Blender", "3D Art", 
+        "Photo Editing", "Vector Design", "Video Compositing", "Excel", "Teams"
     ]
 };
 
