@@ -308,7 +308,7 @@ const Routes = {
             <h1>ABOUT</h1>
             <div class="brutal-block">
                 <h2>MISSION</h2>
-                <p>I believe we have a duty to influence the world around us for the better; otherwise, we are no more substantial than a chemical reaction—fascinating, but in the end insignificant. Ultimately, engineering is not only the most effective, but the only way we can positively affect change in this world. Therefore, the most advanced engineering endavours are the most important towards the betterment of humanity. It is for that reason I am deeply inspired and driven to work on the biggest engineering projects I possibly can.</p>
+                <p>I believe we have a duty to influence the world around us for the better; otherwise, we are no more substantial than a chemical reaction—fascinating, but in the end insignificant. Ultimately, engineering is not only the most effective, but the only way we can positively affect change in this world. Therefore, the most advanced engineering endeavors are the most important towards the betterment of humanity. It is for that reason I am deeply inspired and driven to work on the biggest engineering projects I possibly can.</p>
             </div>
             <div class="brutal-block">
                 <h2>BACKGROUND</h2>
